@@ -1,0 +1,5 @@
+# Configuración de la pantalla de título. Formato:  clave = valor
+titulo = El faro de Cabo Niebla
+subtitulo = Una novela visual de ejemplo
+fondo_titulo = faro_noche
+musica_titulo = tema_faro

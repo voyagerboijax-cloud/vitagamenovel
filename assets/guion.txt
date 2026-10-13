@@ -1,0 +1,143 @@
+# ====================================================================
+#  GUION DE EJEMPLO: "El faro de Cabo Niebla"
+# ====================================================================
+#  Este archivo ES tu novela. Edítalo con el Bloc de notas (o cualquier
+#  editor de texto), guarda y vuelve a compilar. No hay que programar.
+#
+#  REGLAS BÁSICAS
+#   - Las líneas que empiezan con #  son comentarios: el juego las ignora.
+#   - Una línea de texto = un cuadro de diálogo.
+#         Ana: Hola, ¿cómo estás?
+#     Si escribes  Narrador:  no se muestra nombre (sirve para narrar).
+#     Para forzar un salto de línea dentro del cuadro escribe  \n
+#   - Las órdenes empiezan con @ . Las que hay son:
+#
+#     @fondo nombre                      cambia el fondo
+#     @personaje id expresion posicion   muestra o cambia un personaje
+#                                        (posicion: izquierda, centro, derecha)
+#     @quitar id                         oculta un personaje  (@quitar todos)
+#     @musica nombre                     empieza una música  (@musica ninguna la para)
+#     @sonido nombre                     suena un efecto una vez
+#     @opcion "Texto" -> etiqueta        una opción del menú (varias seguidas
+#                                        forman un menú de hasta 6)
+#     @etiqueta nombre                   marca un lugar al que se puede saltar
+#     @ir nombre                         salta a una etiqueta
+#     @poner variable 0                  guarda un número (memoria de la historia)
+#     @sumar variable 1                  suma (o resta con -1) a una variable
+#     @si variable >= 2 -> etiqueta      salta solo si se cumple la condición
+#     @incluir otro_archivo.txt          mete aquí otro archivo de texto
+#     @fin                               termina la historia
+#
+#  ARCHIVOS DE IMAGEN Y SONIDO (siempre en minúsculas, sin espacios)
+#     fondos/muelle_dia.png         ->  @fondo muelle_dia
+#     personajes/lia_feliz.png      ->  @personaje lia feliz izquierda
+#     musica/tema_faro.ogg          ->  @musica tema_faro
+#     sonidos/campana.wav           ->  @sonido campana
+#  Si falta alguno, el juego te avisa al arrancar con el nombre exacto.
+#
+#  La historia empieza en  @etiqueta inicio
+# ====================================================================
+
+@etiqueta inicio
+@poner confianza 0
+@poner pistas 0
+@quitar todos
+@fondo muelle_dia
+@musica tema_faro
+
+Narrador: La lancha te deja en el muelle de Cabo Niebla justo cuando el sol empieza a caer.
+Narrador: En el pueblo nadie quiso explicarte por qué el faro lleva tres años apagado.
+
+@personaje mateo normal derecha
+Mateo: ¿Tú eres quien mandó la carta? Pocos suben hasta allá arriba.
+
+@etiqueta muelle_menu
+@opcion "Preguntar por el faro" -> p_faro
+@opcion "Preguntar por la guardiana" -> p_guardiana
+@opcion "Dar las gracias y subir" -> subir
+
+@etiqueta p_faro
+@personaje mateo serio derecha
+Mateo: Se apagó la noche de la gran tormenta. La lámpara sigue entera, pero nadie se atreve a encenderla.
+@sumar pistas 1
+@ir muelle_menu
+
+@etiqueta p_guardiana
+@personaje mateo normal derecha
+Mateo: Lía no ha bajado al pueblo desde entonces. Cuida el faro como si todavía hiciera falta.
+Mateo: Si quieres que te escuche, sé sincero con ella. Odia las mentiras.
+@sumar pistas 1
+@ir muelle_menu
+
+@etiqueta subir
+Mateo: Cuidado con los escalones. Y no te asustes si ella tarda en abrir.
+@quitar mateo
+@fondo faro_interior
+@sonido campana
+
+Narrador: Subes la escalera de caracol hasta una sala llena de mapas y tazas de té.
+@personaje lia normal izquierda
+Lía: No esperaba visitas. Menos aún de alguien que escribe cartas tan largas.
+Lía: Dime la verdad: ¿a qué has venido?
+
+@opcion "A reparar la lámpara. Es mi trabajo." -> verdad
+@opcion "Soy inspector del puerto." -> mentira
+@opcion "A escuchar tu historia." -> escuchar
+
+@etiqueta verdad
+@sumar confianza 1
+@personaje lia feliz izquierda
+Lía: Al menos eres directo. Eso ya es algo.
+@ir noche
+
+@etiqueta mentira
+@sumar confianza -1
+@personaje lia triste izquierda
+Lía: Los inspectores no suben con las manos manchadas de grasa de lámpara.
+Lía: Mateo te avisó de que odio las mentiras, ¿verdad?
+@ir noche
+
+@etiqueta escuchar
+@sumar confianza 1
+@sumar pistas 1
+@personaje lia triste izquierda
+Lía: Esa noche mi padre subió a encender la luz... y la tormenta se llevó la escalera exterior.\nDesde entonces no me atrevo a apagarla del todo.
+@personaje lia normal izquierda
+Lía: Nadie había preguntado antes. Gracias.
+@ir noche
+
+@etiqueta noche
+@fondo faro_noche
+@musica tema_faro
+Narrador: Pasáis horas trabajando juntos en la lámpara, entre tuercas, aceite y silencios.
+@personaje lia normal izquierda
+Lía: Una cosa más. Si la enciendo esta noche, ya no habrá vuelta atrás.
+
+@si confianza >= 1 -> final_bueno
+@si pistas >= 2 -> final_neutro
+@ir final_malo
+
+@etiqueta final_bueno
+@personaje lia feliz izquierda
+Lía: Hagámoslo. Juntos.
+@sonido campana
+Narrador: El haz de luz recorre el mar por primera vez en tres años. En el pueblo, alguien aplaude desde el muelle.
+@incluir epilogo.txt
+
+@etiqueta final_neutro
+@personaje lia normal izquierda
+Lía: Está bien, la encenderé. Pero tendrás que ganarte mi confianza poco a poco.
+Narrador: La luz parpadea unos segundos y se mantiene. Es un comienzo.
+@ir fin_historia
+
+@etiqueta final_malo
+@personaje lia triste izquierda
+Lía: Mejor déjala apagada. Ahora quiero estar sola.
+Narrador: Bajas la escalera sin mirar atrás. El faro sigue a oscuras.
+@ir fin_historia
+
+@etiqueta fin_historia
+@quitar todos
+@musica ninguna
+Narrador: FIN
+@fin

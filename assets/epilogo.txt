@@ -1,0 +1,9 @@
+# Epílogo del final bueno. Este archivo se mete en el guion con:  @incluir epilogo.txt
+# Sirve para dividir una novela larga en capítulos (capitulo1.txt, capitulo2.txt...).
+
+@quitar todos
+@fondo muelle_dia
+@personaje mateo normal centro
+Mateo: Hacía tres años que no veía esa luz desde aquí abajo. Gracias, forastero.
+@quitar todos
+@ir fin_historia
