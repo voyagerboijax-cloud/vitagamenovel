@@ -1,0 +1,21 @@
+name: Compilar VPK
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: vitasdk/vitasdk:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mostrar librerias disponibles
+        run: ls $VITASDK/arm-vita-eabi/lib | grep -iE "sdl|vorbis|ogg|freetype|png|jpeg|mpg123|modplug|opus|flac" || true
+      - name: Compilar
+        run: |
+          mkdir build && cd build
+          cmake ..
+          make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: novela-vpk
+          path: build/*.vpk
