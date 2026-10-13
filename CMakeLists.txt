@@ -44,7 +44,7 @@ else()
   # Librerias de SDL2 y las que usan por dentro. Las que no existan se saltan solas.
   set(VITA_LIB_NAMES
     SDL2_mixer SDL2_ttf SDL2_image SDL2
-    vorbisfile vorbis vorbisidec ogg mpg123 modplug opusfile opus FLAC xmp
+    vorbisfile vorbis ogg mpg123 modplug opusfile opus FLAC xmp
     webp webpdemux webpmux sharpyuv tiff jpeg png freetype harfbuzz bz2 brotlidec brotlicommon z)
   set(VITA_STUB_NAMES
     SceAppMgr SceAppUtil SceAudio SceAudioIn SceCamera SceCommonDialog SceCtrl SceDisplay
