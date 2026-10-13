@@ -45,11 +45,13 @@ else()
   set(VITA_LIB_NAMES
     SDL2_mixer SDL2_ttf SDL2_image SDL2
     vorbisfile vorbis ogg mpg123 modplug opusfile opus FLAC xmp
-    webp webpdemux webpmux sharpyuv tiff jpeg png freetype harfbuzz bz2 brotlidec brotlicommon z)
+    webp webpdemux webpmux sharpyuv tiff jpeg png freetype harfbuzz bz2 brotlidec brotlicommon z
+    pthread vitaGL mathneon vitashark SceShaccCgExt taihen_stub)
   set(VITA_STUB_NAMES
     SceAppMgr SceAppUtil SceAudio SceAudioIn SceCamera SceCommonDialog SceCtrl SceDisplay
     SceFios2 SceGxm SceHid SceIme SceMotion ScePower SceRtc SceSysmodule SceTouch
-    SceLibKernel SceKernelThreadMgr SceKernelDmacMgr SceKernelModulemgr SceProcessmgr SceIofilemgr SceSysmem)
+    SceLibKernel SceKernelThreadMgr SceKernelDmacMgr SceKernelModulemgr SceProcessmgr SceIofilemgr SceSysmem
+    SceShaccCg)
 
   set(VITA_LIBS "")
   foreach(name IN LISTS VITA_LIB_NAMES)
