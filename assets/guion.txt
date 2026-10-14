@@ -57,7 +57,7 @@ Narrador: "Supongo que Nami se siente segura porque papá y los demás no están
 Narrador: La que está soltando esos gemidos desenfrenados en la habitación de al lado es mi hermana pequeña, Nami.
 
 @fondo back_01
-@personaje s jyunko h01 centro
+@personaje yunko normalr centro
 
 Narrador:"Si dices eso, ¿acaso no somos iguales?"
 
