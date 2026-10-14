@@ -9,6 +9,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+#include <psp2/touch.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
