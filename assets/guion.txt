@@ -42,11 +42,25 @@
 @poner confianza 0
 @poner pistas 0
 @quitar todos
-@fondo muelle_dia
+@fondo back_01
 @musica tema_faro
 
-Narrador: La lancha te deja en el muelle de Cabo Niebla justo cuando el sol empieza a caer.
-Narrador: En el pueblo nadie quiso explicarte por qué el faro lleva tres años apagado.
+Narrador: Septiembre. La Tierra se encamina sin duda hacia el calentamiento global, y Japón se convertirá indudablemente en un país subtropical.
+Narrador: "Junko-san, hace calor otra vez esta noche, ¿verdad?"
+Narrador: Mi hermana Junko asintió levemente en respuesta a mi pregunta. Le perlaban las sienes con sudor.
+
+@fondo back_02_c
+
+Narrador: "Pero en serio... mis vecinos tienen muchísima energía a pesar de este calor. Incluso con el aire acondicionado, deben estar acalorados jugando con tanta intensidad."
+Narrador: Sonreí con ironía al oír los gemidos de un hombre y una mujer que provenían de la habitación contigua.
+Narrador: "Supongo que Nami se siente segura porque papá y los demás no están aquí."
+Narrador: La que está soltando esos gemidos desenfrenados en la habitación de al lado es mi hermana pequeña, Nami.
+
+@fondo back_01
+@personaje s jyunko h01 centro
+
+Narrador:"Si dices eso, ¿acaso no somos iguales?"
+
 
 @personaje mateo normal derecha
 Mateo: ¿Tú eres quien mandó la carta? Pocos suben hasta allá arriba.
